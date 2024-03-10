@@ -6,16 +6,6 @@ namespace TicTacToe
 {
     internal class Printer
     {
-        public static void RepeatCharacter(char character, int length)
-        {
-            Console.Write(new string(character, length));
-        }
-
-        public static void RepeatCharacterLine(char character, int length)
-        {
-            Console.WriteLine(new string(character, length));
-        }
-
         public static string LeftPaddingOfCenteredText(string input)
         {
             var screenSize = GetScreenSize();
