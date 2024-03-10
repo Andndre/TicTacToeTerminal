@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TicTacToe
+﻿namespace TicTacToe
 {
     internal class Program
     {

@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Xml.Serialization;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TicTacToe
 {
