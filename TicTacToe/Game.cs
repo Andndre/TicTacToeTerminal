@@ -5,33 +5,49 @@ namespace TicTacToe
 {
     internal class Game
     {
+        // Warna utama
         public readonly ConsoleColor primaryColor = ConsoleColor.DarkBlue;
+        // Kumpulan halaman pada game
         public Page[] pages = new Page[10];
+        // State yang ada pada game
         public GameState currentState;
 
         public Game(GameState defaultState)
         {
+            // Set default state
             currentState = defaultState;
         }
 
+        // Menambahkan halaman ke game
         public void AddStateHandler(GameState state, ref Page page)
         {
             pages[(int)state] = page;
         }
 
+        // Menjalankan game
         public void Run()
         {
+            // Set encoding supaya output unicode (support symbols)
             Console.OutputEncoding = System.Text.Encoding.Unicode;
+            // Menjalankan game loop
             GameLoop();
         }
 
+        // Game loop
         private void GameLoop()
         {
+            // Selama state game bukan quit, ulangi terus page.Run()
+            // Note: page.Run() memiliki loop nya tersendiri di dalamnya 
+            // dengan state nya masing masing
             while (currentState != GameState.Quit)
             {
+                // Dapatkan page berdasarkan state
+                // Note: ini mungkin karena ada inheritance
                 Page page = pages[(int)currentState];
+                // Jalankan page
                 page.Run();
             }
+            // Ketika game quit
             Console.Clear();
             Console.WriteLine("Terimakasih sudah bermain!");
         }

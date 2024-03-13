@@ -2,6 +2,7 @@
 
 namespace TicTacToe
 {
+    // State yang ada pada game
     public enum State
     {
         O = 'O',
@@ -14,17 +15,23 @@ namespace TicTacToe
 
     internal class TicTacToe
     {
+        // Jika game selesai
         public bool gameOver = false;
+        // State awal
         public State state = State.O;
+        // Kursor dimana pengguna akan bergerak
         public int row = 0;
         public int column = 0;
+        // Ukuran board
         public int GRID_SIZE = 3;
+        // Board (default kosong)
         public readonly State[,] board = {
             { State.NONE, State.NONE, State.NONE },
             { State.NONE, State.NONE, State.NONE },
             { State.NONE, State.NONE, State.NONE },
         };
 
+        // Mengecek apakah ada pemenang
         public State CheckWinner()
         {
             State candidate;
@@ -130,6 +137,7 @@ namespace TicTacToe
             return IsFull() ? State.DRAW : State.NONE;
         }
 
+        // Mengisi board pada Kursor dengan state saat ini (player O/X)
         public bool SetValue()
         {
             if (state == State.NONE) return false;
@@ -140,6 +148,7 @@ namespace TicTacToe
             return true;
         }
 
+        // Reset game (clear board)
         public void Reset()
         {
             gameOver = false;
@@ -153,6 +162,7 @@ namespace TicTacToe
             state = State.O;
         }
 
+        // Mengecek apakah board penuh
         public bool IsFull()
         {
             for (int i = 0; i < GRID_SIZE; i++)
@@ -165,6 +175,7 @@ namespace TicTacToe
             return true;
         }
 
+        // Dipanggil setelah player membuat gerakan. Mengecek apakah ada pemenang, kemudian menentukan state game
         private void NextTurn()
         {
             State winner = CheckWinner();
@@ -194,6 +205,7 @@ namespace TicTacToe
             }
         }
 
+        // Menggerakkan kursor dengan offset r dan c
         public void MoveCursor(int r, int c)
         {
             if (row + r == GRID_SIZE || row + r < 0 || column + c == GRID_SIZE || column + c < 0)

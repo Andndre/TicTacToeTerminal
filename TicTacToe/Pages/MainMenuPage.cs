@@ -4,6 +4,8 @@ namespace TicTacToe.Pages
 {
     internal class MainMenuPage : Page
     {
+        // Ada 3 tombol pada halaman ini. Variabel ini mengindikasikan
+        // apa tombol yang dipilih
         int selectedButton = 1;
 
         public MainMenuPage(ref Game game) : base(ref game)
